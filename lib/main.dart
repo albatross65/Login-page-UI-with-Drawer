@@ -47,7 +47,7 @@ class _LoginScreenState extends State<LoginScreen> {
         backgroundColor: Colors.indigo[900],
         title: Text(
           'Login App',
-          style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),
+          style: TextStyle(color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white), // Hamburger icon color set to white
       ),
@@ -102,7 +102,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         if (value == null || value.isEmpty) {
                           return 'Please enter your phone number';
                         }
-                        if (!RegExp(r'^\d{10}$').hasMatch(value)) {
+                        // Updated regex for international phone numbers
+                        if (!RegExp(r'^\+?[0-9]{10,15}$').hasMatch(value)) {
                           return 'Please enter a valid phone number';
                         }
                         return null;
